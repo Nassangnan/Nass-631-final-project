@@ -1,5 +1,5 @@
 ---
-title: "Final-project-draft"
+title: "SEIS 631 Final-project"
 author: "Nassangnan Kamagate"
 date: "5/11/2022"
 output: pdf_document
@@ -59,15 +59,21 @@ table(MAT$RiskLevel)
 
 We know from the distribution that most of the pregnant women have A low risk conditions .
 
+
+I used this plot to represent the difference between the three different levels .
+
 ```{r}
 RiskLevel <- table(MAT$RiskLevel)
 plot(as.factor(MAT$RiskLevel),MAT$HeartRate)
 ```
+As we can see high risk level have the bigger proportion.
+
 
 ```{r}
 anova(aov(HeartRate ~ RiskLevel, data=MAT))
 ```
 
+The function head and tail will help me get the first row and last of the data set.
 
 
 ```{r}
@@ -80,6 +86,8 @@ tail(MAT)
 
 ## Pregnant  women under 18
 
+Let's start by plotting a table of girl under 18.
+
 ```{r}
 table(MAT$Age<18)
 ```
@@ -89,12 +97,18 @@ Age <- table(MAT$Age<18)
 barplot(Age)
 ```
 
+We can see from that only 193 girl are under 18.
+
+
 ## Pregnant women under 18 with high risk level
+Here I will divided the data into different subset.The first one will extracting the group of girl under 18 from the data set.
 
 ```{r}
 ltage18 <- subset(MAT, Age<18) 
 ltage18
 ```
+I will create a subset representing the group of women having high risk condition.
+
 
 ```{r}
 MAT$RiskLevel == "high risk"
@@ -103,13 +117,20 @@ MAT$RiskLevel == "high risk"
 ```{r}
 hr <- MAT$RiskLevel == "high risk"
 hr <- subset(MAT, MAT$RiskLevel == "high risk")
-p18_highrisk <- subset(ltage18, ltage18$RiskLevel == "high risk")
-
 ```
+
+Now I will combine both of the subset to create a subset about the women under 18 with high risk condition.
+
+```{r}
+p18_highrisk <- subset(ltage18, ltage18$RiskLevel == "high risk")
+```
+
 
 From the research above we can see that 37 seven person out 272 from the list of women under 18 are in high risk . This represent 13% of the list . It's a small percentage but it is still not to be be neglected.
 
 ## Study of the different condition
+
+I will use the summary function to help me study the different category.
 
 ## DiastolicBP
 
@@ -117,17 +138,24 @@ From the research above we can see that 37 seven person out 272 from the list of
 summary(MAT$DiastolicBP)
 ```
 
+From the result we can see that the minimum upper value of blood pressure in 49 and the maximum is 100. The mean which represent the average is 76.46.
+
 ## systolicBP
 
 ```{r}
 summary(MAT$SystolicBP)
 ```
 
+From the result we can see that the minimum lower value blood pressure in 70 and the maximum is 160. The mean which represent the average is 113.2
+
 ## BS
 
 ```{r}
 summary(MAT$BS)
 ```
+
+
+From the result we can see that the minimum blood glucose levels in 6 and the maximum is 19. The mean which represent the average is 8.72.
 
 ## Heart Rate
 
@@ -136,9 +164,12 @@ summary(MAT$HeartRate)
 ```
 
 
+The result indicate that the minimum heart rate is 7 and the maximum is 90. The mean which represent the average is 74.30
+
 # Topics From Class
 
 ## Rmarkdown:
+
 
 One of my favorite things to  use this semester,  it is my first semester  in Business  Analytics I was scared at the beginning but really after having one class I really loved it.
 
@@ -148,7 +179,7 @@ This is an also something I enjoy learning I did not go yet as far I wanted to  
 
 ## Anova:
 
-I used this topics from the suggestion of one of  the  student  and it came out  great.  It really help me have create a great visualisation .
+I used this topics from the suggestion of one of  the  student  and it came out  great.  It really help me have create a great visualization .
  
 ## Data subsetting:
 
